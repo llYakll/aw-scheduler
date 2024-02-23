@@ -1,4 +1,4 @@
-const mydoc = document; // Store the document object in a variable named mydoc
+const mydoc = document; // Store the document object in a variable
 
 // Function to generate the calendar for a specific year and month
 function generateCalendar(year, month) {
