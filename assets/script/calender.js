@@ -78,7 +78,7 @@ function checkJobScheduled(year, month, dayOfMonth) {
         modal.classList.add('modal');
         modal.innerHTML = `
             <div class="modal-content">
-                <p>There is no job scheduled for ${year}-${month + 1}-${dayOfMonth}, would you like to schedule a job?</p>
+                <p>There is no job scheduled for ${dayOfMonth}-${month + 1}-${year}, would you like to schedule a job?</p>
                 <div class="modal-buttons">
                     <button class="yes-btn">Yes</button>
                     <button class="no-btn">No</button>
