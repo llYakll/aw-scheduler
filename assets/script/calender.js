@@ -1,4 +1,4 @@
-const mydoc = document; // Store the document object in a variable
+const mydoc = document; // Store the document object in a variable named mydoc
 
 // Function to generate the calendar for a specific year and month
 function generateCalendar(year, month) {
@@ -56,7 +56,7 @@ function generateCalendar(year, month) {
 
                 // Add click event listener to each cell
                 cell.addEventListener('click', () => {
-                    const clickedDay = parseInt(cell.textContent); // Get the clicked day from the cell content
+                    const clickedDay = parseInt(dateSpan.textContent); // Get the clicked day from the cell content
                     checkJobScheduled(year, month, clickedDay); // Call function to check if job is scheduled
                 });
                 dayOfMonth++;
@@ -69,16 +69,13 @@ function generateCalendar(year, month) {
 
 // Function to check if a job is scheduled for the clicked day
 function checkJobScheduled(year, month, dayOfMonth) {
-    const jobScheduled = Math.random() < 0.5; // Simulate job scheduling status (true or false)
-    if (jobScheduled) {
-        alert(`Job information for ${year}-${month + 1}-${dayOfMonth}`); // Display job information if scheduled
-    } else {
-        // Create a custom modal
+    return new Promise((resolve, reject) => {
+        const jobScheduled = Math.random() < 0.5; // Simulate job scheduling status (true or false)
         const modal = mydoc.createElement('div');
         modal.classList.add('modal');
         modal.innerHTML = `
             <div class="modal-content">
-                <p>There is no job scheduled for ${dayOfMonth}-${month + 1}-${year}, would you like to schedule a job?</p>
+                <p>There is no job scheduled for ${year}-${month + 1}-${dayOfMonth}, would you like to schedule a job?</p>
                 <div class="modal-buttons">
                     <button class="yes-btn">Yes</button>
                     <button class="no-btn">No</button>
@@ -88,20 +85,18 @@ function checkJobScheduled(year, month, dayOfMonth) {
         mydoc.body.appendChild(modal);
 
         // Add event listeners to the Yes and No buttons
-        return new Promise((resolve, reject) => {
-            const yesBtn = modal.querySelector('.yes-btn');
-            yesBtn.addEventListener('click', () => {
-                mydoc.body.removeChild(modal);
-                resolve(true);
-            });
-
-            const noBtn = modal.querySelector('.no-btn');
-            noBtn.addEventListener('click', () => {
-                mydoc.body.removeChild(modal);
-                resolve(false);
-            });
+        const yesBtn = modal.querySelector('.yes-btn');
+        yesBtn.addEventListener('click', () => {
+            mydoc.body.removeChild(modal);
+            resolve(true);
         });
-    }
+
+        const noBtn = modal.querySelector('.no-btn');
+        noBtn.addEventListener('click', () => {
+            mydoc.body.removeChild(modal);
+            resolve(false);
+        });
+    });
 }
 
 generateCalendar(2024, 1); // Call the function to generate the calendar for January
