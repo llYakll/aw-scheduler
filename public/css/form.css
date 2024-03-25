@@ -1,0 +1,63 @@
+/* form.css */
+
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, ol, li, table, th, td, form, input, textarea {
+    border-radius: 10px;
+    color: #f2f2f2;
+    text-shadow: 2px 2px 3px black;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #6d6c6c;
+}
+
+/* Center the form */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Style the form */
+.form {
+    box-shadow: 5px 5px 10px #000;
+    width: 50%; /* Adjust form width as needed */
+    background-color: #848383;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex; /* Use flexbox to center form content */
+    flex-direction: column; /* Align content in a vertical column */
+    align-items: center; /* Center content horizontally */
+}
+
+/* Style form fields */
+.form input[type="text"],
+.form textarea {
+    width: 100%; /* Set width to 100% for full width */
+    margin-bottom: 10px; /* Add margin to create space between elements */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #b0b0b0;
+    color: #333; /* Set text color */
+}
+
+/* Style placeholder text color */
+.form input[type="text"]::placeholder,
+.form textarea::placeholder {
+    color: #000; /* Set placeholder text color to black */
+}
+
+/* Style form submit button */
+.form input[type="submit"] {
+    width: 40%; /* Set smaller width for the submit button */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
